@@ -16,16 +16,17 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        // Text attributes
         let memeTextAttributes = [
             NSStrokeColorAttributeName : UIColor.blackColor(),
             NSForegroundColorAttributeName : UIColor.whiteColor(),
             NSFontAttributeName : UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
             NSStrokeWidthAttributeName : -3.0]
         
+        // Apply attributes to textFields
         textTop.defaultTextAttributes = memeTextAttributes
         textBottom.defaultTextAttributes = memeTextAttributes
-        
+        // Align text.
         textTop.textAlignment = NSTextAlignment.Center
         textBottom.textAlignment = NSTextAlignment.Center
         
@@ -35,12 +36,14 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
         self.unsubscribeFromKeyboardNotifications()
+        self.unsubscribeFromKeyboardHidingNotifications()
     }
     
     override func viewWillAppear(animated: Bool) {
         cameraButton.enabled = UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera)
         super.viewWillAppear(animated)
         self.subscribeToKeyboardNotifications()
+        self.subscribeToKeyboardHidingNotifications()
     }
     
     func subscribeToKeyboardNotifications() {
@@ -57,12 +60,37 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         return keyboardSize.CGRectValue().height
     }
     
+    func generateMemedImage() -> UIImage
+    {
+        // TODO: Hide toolbar and navbar
+        
+        // Render view to an image
+        UIGraphicsBeginImageContext(self.view.frame.size)
+        view.drawViewHierarchyInRect(self.view.frame,
+            afterScreenUpdates: true)
+        let memedImage : UIImage =
+        UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return memedImage
+        
+        // TODO:  Show toolbar and navbar
+    }
+    
     func keyboardWillShow(notification: NSNotification) {
         view.frame.origin.y -= getKeyboardHeight(notification)
     }
     
     func keyboardWillHide(notification: NSNotification) {
         view.frame.origin.y += getKeyboardHeight(notification)
+    }
+    
+    func subscribeToKeyboardHidingNotifications() {
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHide:", name: UIKeyboardWillHideNotification, object: nil)
+    }
+    
+    func unsubscribeFromKeyboardHidingNotifications() {
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillHideNotification, object: nil)
     }
 
     @IBAction func pickImage(sender: AnyObject) {
@@ -73,7 +101,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
-        self.imagePicked.image = image
+            self.imagePicked.image = image
         }
         self.dismissViewControllerAnimated(true, completion: nil)
     }
@@ -92,12 +120,12 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         if textField.text == "BOTTOM" {
             textField.text = ""
         }
+        
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
-
         textField.resignFirstResponder()
-        self.unsubscribeFromKeyboardNotifications()
+        
         return true
     }
 }
