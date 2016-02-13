@@ -31,19 +31,13 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         textBottom.textAlignment = NSTextAlignment.Center
         
         textBottom.delegate = self
-    }
-    
-    override func viewWillDisappear(animated: Bool) {
-        super.viewWillDisappear(animated)
-        self.unsubscribeFromKeyboardNotifications()
-        self.unsubscribeFromKeyboardHidingNotifications()
+        textTop.delegate = self
     }
     
     override func viewWillAppear(animated: Bool) {
         cameraButton.enabled = UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera)
         super.viewWillAppear(animated)
-        self.subscribeToKeyboardNotifications()
-        self.subscribeToKeyboardHidingNotifications()
+        
     }
     
     func subscribeToKeyboardNotifications() {
@@ -114,12 +108,22 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     func textFieldDidBeginEditing(textField: UITextField) {
-
+        if textField == textBottom {
+            self.subscribeToKeyboardNotifications()
+            self.subscribeToKeyboardHidingNotifications()
+        }
         if textField.text == "TOP" {
             textField.text = ""
         }
         if textField.text == "BOTTOM" {
             textField.text = ""
+        }
+    }
+    
+    func textFieldDidEndEditing(textField: UITextField) {
+        if textField == textBottom {
+            self.unsubscribeFromKeyboardNotifications()
+            self.unsubscribeFromKeyboardHidingNotifications()
         }
     }
     
