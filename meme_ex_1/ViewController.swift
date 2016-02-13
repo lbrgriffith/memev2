@@ -14,7 +14,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var textTop: UITextField!
     @IBOutlet weak var textBottom: UITextField!
     @IBOutlet weak var bottomToolBar: UIToolbar!
-    @IBOutlet weak var shareButton: UIButton!
+    @IBOutlet weak var topToolBar: UIToolbar!
+    @IBOutlet weak var shareButton: UIBarButtonItem!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -77,7 +78,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         // Hide toolbar and navbar
         navigationController?.navigationBarHidden = true
         bottomToolBar.hidden = true
-        shareButton.hidden = true
+        topToolBar.hidden = true
         
         // Render view to an image
         UIGraphicsBeginImageContext(self.view.frame.size)
@@ -90,7 +91,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         // Show toolbar and navbar
         navigationController?.navigationBarHidden = false
         bottomToolBar.hidden = false
-        shareButton.hidden = false
+        topToolBar.hidden = false
         
         return memedImage
     }
