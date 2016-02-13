@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -53,6 +54,13 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="n2t-c0-mDL"/>
                                 </connections>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QE2-2S-crt">
+                                <rect key="frame" x="23" y="20" width="40" height="30"/>
+                                <state key="normal" title="Share"/>
+                                <connections>
+                                    <action selector="share:" destination="BYZ-38-t0r" eventType="touchUpInside" id="OkI-AO-Gko"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -63,10 +71,12 @@
                             <constraint firstItem="WkQ-wz-W50" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="8js-dn-Xab"/>
                             <constraint firstItem="WkQ-wz-W50" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="9VQ-ZM-NG0"/>
                             <constraint firstAttribute="trailing" secondItem="WkQ-wz-W50" secondAttribute="trailing" id="Hdi-1V-wAq"/>
+                            <constraint firstItem="QE2-2S-crt" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="Yzt-br-See"/>
                             <constraint firstItem="c0c-IL-C19" firstAttribute="centerX" secondItem="WkQ-wz-W50" secondAttribute="centerX" id="dRm-2n-dGg"/>
                             <constraint firstItem="p9X-AF-gGp" firstAttribute="trailing" secondItem="c0c-IL-C19" secondAttribute="trailing" id="iEM-7f-2WC"/>
                             <constraint firstItem="FZd-3R-fAL" firstAttribute="top" secondItem="c0c-IL-C19" secondAttribute="bottom" constant="-45" id="m8b-U4-CeA"/>
                             <constraint firstItem="p9X-AF-gGp" firstAttribute="leading" secondItem="c0c-IL-C19" secondAttribute="leading" id="uNU-rq-URZ"/>
+                            <constraint firstItem="QE2-2S-crt" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="veG-kJ-Fbq"/>
                             <constraint firstItem="c0c-IL-C19" firstAttribute="top" secondItem="p9X-AF-gGp" secondAttribute="bottom" constant="-48" id="zYh-w1-yXR"/>
                         </constraints>
                     </view>
@@ -74,6 +84,7 @@
                         <outlet property="bottomToolBar" destination="WkQ-wz-W50" id="wY6-aK-7CW"/>
                         <outlet property="cameraButton" destination="kQt-BP-TTI" id="tPq-1t-QkB"/>
                         <outlet property="imagePicked" destination="c0c-IL-C19" id="KNC-iP-rrw"/>
+                        <outlet property="shareButton" destination="QE2-2S-crt" id="ocf-m5-YCq"/>
                         <outlet property="textBottom" destination="FZd-3R-fAL" id="Als-i5-yux"/>
                         <outlet property="textTop" destination="p9X-AF-gGp" id="UMG-qF-HW8"/>
                     </connections>
