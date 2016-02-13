@@ -28,25 +28,31 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         // Apply attributes to textFields
         textTop.defaultTextAttributes = memeTextAttributes
         textBottom.defaultTextAttributes = memeTextAttributes
+        
         // Align text.
         textTop.textAlignment = NSTextAlignment.Center
         textBottom.textAlignment = NSTextAlignment.Center
         
+        // Set the textFields delegate to this class.
         textBottom.delegate = self
         textTop.delegate = self
+        
+        // Disable the share button.
         shareButton.enabled = false
     }
     
     @IBAction func share(sender: AnyObject) {
+        // Get the current MemeImage
         let activityItem: [AnyObject] = [save().MemeImage as AnyObject]
         
+        // Show the Activity View to allow the user to share theie Meme
         let activityView = UIActivityViewController(activityItems: activityItem, applicationActivities: nil)
-        
         self.presentViewController(activityView, animated: true, completion: nil)
     }
   
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        // Only allow the camera option if the device supports it.
         cameraButton.enabled = UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera)
     }
     
@@ -58,6 +64,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillShowNotification, object: nil)
     }
     
+    // Calcuate and return the size of the keyboard.
     func getKeyboardHeight(notification: NSNotification) -> CGFloat {
         let userInfo = notification.userInfo
         let keyboardSize = userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue // of CGRect
@@ -109,6 +116,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillHideNotification, object: nil)
     }
 
+    // Allow the user to select an image.
     @IBAction func pickImage(sender: AnyObject) {
         let imagePicker = UIImagePickerController()
         imagePicker.delegate = self
@@ -116,6 +124,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+        // Check if image is selected.
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
             self.imagePicked.image = image
             shareButton.enabled = true
@@ -123,6 +132,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
+    // Allow the user to select an image from the device's album
     @IBAction func pickAnImageFromAlbum (sender: AnyObject) {
         let imagePicker = UIImagePickerController()
         imagePicker.delegate = self
@@ -131,10 +141,12 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     func textFieldDidBeginEditing(textField: UITextField) {
+        // Enable notifications only if the bottom textbox is being edited.
         if textField == textBottom {
             self.subscribeToKeyboardNotifications()
             self.subscribeToKeyboardHidingNotifications()
         }
+        // remove the text if = to TOP or BOTTOM initial text.
         if textField.text == "TOP" {
             textField.text = ""
         }
@@ -144,6 +156,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     func textFieldDidEndEditing(textField: UITextField) {
+        // Remember to remove the observers if done editing bottom text.
         if textField == textBottom {
             self.unsubscribeFromKeyboardNotifications()
             self.unsubscribeFromKeyboardHidingNotifications()
@@ -151,6 +164,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
+        // dismiss the keyboard when user presses the return/done button.
         textField.resignFirstResponder()
         return true
     }
