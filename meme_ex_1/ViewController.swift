@@ -13,6 +13,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var cameraButton: UIBarButtonItem!
     @IBOutlet weak var textTop: UITextField!
     @IBOutlet weak var textBottom: UITextField!
+    @IBOutlet weak var bottomToolBar: UIToolbar!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,9 +36,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     override func viewWillAppear(animated: Bool) {
-        cameraButton.enabled = UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera)
         super.viewWillAppear(animated)
-        
+        cameraButton.enabled = UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera)
     }
     
     func subscribeToKeyboardNotifications() {
@@ -56,7 +56,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     func generateMemedImage() -> UIImage
     {
-        // TODO: Hide toolbar and navbar
+        // Hide toolbar and navbar
+        navigationController?.navigationBarHidden = true
+        bottomToolBar.hidden = true
         
         // Render view to an image
         UIGraphicsBeginImageContext(self.view.frame.size)
@@ -66,9 +68,11 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         
-        return memedImage
+        // Show toolbar and navbar
+        navigationController?.navigationBarHidden = false
+        bottomToolBar.hidden = false
         
-        // TODO:  Show toolbar and navbar
+        return memedImage
     }
     
     func keyboardWillShow(notification: NSNotification) {
