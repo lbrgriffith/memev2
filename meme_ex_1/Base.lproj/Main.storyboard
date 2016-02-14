@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -25,6 +26,9 @@
                             </imageView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="BOTTOM" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FZd-3R-fAL">
                                 <rect key="frame" x="0.0" y="498" width="600" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="YZr-Pd-2ji"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
                                 <connections>
@@ -54,6 +58,9 @@
                             </textField>
                             <toolbar opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WkQ-wz-W50">
                                 <rect key="frame" x="0.0" y="548" width="600" height="52"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="52" id="WYU-2N-94x"/>
+                                </constraints>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="42o-Dn-S3i"/>
                                     <barButtonItem systemItem="camera" id="kQt-BP-TTI">
@@ -73,25 +80,24 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="c0c-IL-C19" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="7.5" id="25L-2Z-QMJ"/>
-                            <constraint firstItem="FZd-3R-fAL" firstAttribute="leading" secondItem="c0c-IL-C19" secondAttribute="leading" id="3MM-4x-qvO"/>
-                            <constraint firstItem="FZd-3R-fAL" firstAttribute="top" secondItem="c0c-IL-C19" secondAttribute="bottom" constant="-45" id="4dk-fc-0gs"/>
-                            <constraint firstItem="FZd-3R-fAL" firstAttribute="trailing" secondItem="c0c-IL-C19" secondAttribute="trailing" id="6ui-c6-J26"/>
-                            <constraint firstItem="FZd-3R-fAL" firstAttribute="bottom" secondItem="c0c-IL-C19" secondAttribute="bottom" id="6zm-sh-vx6"/>
-                            <constraint firstItem="Jdk-bl-3Yn" firstAttribute="trailing" secondItem="WkQ-wz-W50" secondAttribute="trailing" id="7eA-km-Z7e"/>
-                            <constraint firstItem="WkQ-wz-W50" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="8js-dn-Xab"/>
-                            <constraint firstItem="Jdk-bl-3Yn" firstAttribute="leading" secondItem="WkQ-wz-W50" secondAttribute="leading" id="9MI-rw-oHm"/>
-                            <constraint firstItem="WkQ-wz-W50" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="9VQ-ZM-NG0"/>
-                            <constraint firstAttribute="trailing" secondItem="WkQ-wz-W50" secondAttribute="trailing" id="Hdi-1V-wAq"/>
-                            <constraint firstItem="WkQ-wz-W50" firstAttribute="top" secondItem="c0c-IL-C19" secondAttribute="bottom" constant="5" id="I8S-aT-o8c"/>
-                            <constraint firstItem="Jdk-bl-3Yn" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="PJ6-kx-Pnv"/>
-                            <constraint firstItem="p9X-AF-gGp" firstAttribute="top" secondItem="c0c-IL-C19" secondAttribute="top" id="Qte-YQ-e6e"/>
-                            <constraint firstItem="c0c-IL-C19" firstAttribute="centerX" secondItem="WkQ-wz-W50" secondAttribute="centerX" id="dRm-2n-dGg"/>
-                            <constraint firstItem="p9X-AF-gGp" firstAttribute="trailing" secondItem="c0c-IL-C19" secondAttribute="trailing" id="iEM-7f-2WC"/>
-                            <constraint firstItem="FZd-3R-fAL" firstAttribute="top" secondItem="c0c-IL-C19" secondAttribute="bottom" constant="-45" id="m8b-U4-CeA"/>
-                            <constraint firstItem="p9X-AF-gGp" firstAttribute="top" secondItem="Jdk-bl-3Yn" secondAttribute="bottom" constant="8" id="t33-ub-i23"/>
-                            <constraint firstItem="p9X-AF-gGp" firstAttribute="leading" secondItem="c0c-IL-C19" secondAttribute="leading" id="uNU-rq-URZ"/>
-                            <constraint firstItem="c0c-IL-C19" firstAttribute="top" secondItem="p9X-AF-gGp" secondAttribute="bottom" constant="-48" id="zYh-w1-yXR"/>
+                            <constraint firstItem="WkQ-wz-W50" firstAttribute="top" secondItem="c0c-IL-C19" secondAttribute="bottom" constant="5" id="3Q2-eq-1Ds"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="c0c-IL-C19" secondAttribute="trailing" constant="-20" id="4kF-Vv-EiS"/>
+                            <constraint firstItem="FZd-3R-fAL" firstAttribute="leading" secondItem="WkQ-wz-W50" secondAttribute="leading" id="6nM-2w-tCd"/>
+                            <constraint firstItem="WkQ-wz-W50" firstAttribute="top" secondItem="c0c-IL-C19" secondAttribute="bottom" constant="5" id="AwS-oQ-Vul"/>
+                            <constraint firstItem="c0c-IL-C19" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="HFR-mS-qIu"/>
+                            <constraint firstItem="FZd-3R-fAL" firstAttribute="trailing" secondItem="Jdk-bl-3Yn" secondAttribute="trailing" id="Rfv-wP-4nh"/>
+                            <constraint firstItem="FZd-3R-fAL" firstAttribute="leading" secondItem="c0c-IL-C19" secondAttribute="leading" id="RrX-ep-VVt"/>
+                            <constraint firstItem="FZd-3R-fAL" firstAttribute="trailing" secondItem="WkQ-wz-W50" secondAttribute="trailing" id="TKf-Vv-vOn"/>
+                            <constraint firstItem="FZd-3R-fAL" firstAttribute="trailing" secondItem="p9X-AF-gGp" secondAttribute="trailing" id="V8s-Br-1TQ"/>
+                            <constraint firstItem="FZd-3R-fAL" firstAttribute="bottom" secondItem="c0c-IL-C19" secondAttribute="bottom" id="WYB-RU-CE3"/>
+                            <constraint firstItem="WkQ-wz-W50" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="YiK-fY-FtD"/>
+                            <constraint firstItem="p9X-AF-gGp" firstAttribute="top" secondItem="Jdk-bl-3Yn" secondAttribute="bottom" constant="8" id="ZIa-qf-zEO"/>
+                            <constraint firstItem="FZd-3R-fAL" firstAttribute="leading" secondItem="Jdk-bl-3Yn" secondAttribute="leading" id="bXP-OM-cpq"/>
+                            <constraint firstItem="Jdk-bl-3Yn" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="oDK-53-WBA"/>
+                            <constraint firstItem="FZd-3R-fAL" firstAttribute="leading" secondItem="p9X-AF-gGp" secondAttribute="leading" id="pRD-0a-Sun"/>
+                            <constraint firstItem="FZd-3R-fAL" firstAttribute="trailing" secondItem="c0c-IL-C19" secondAttribute="trailing" id="s4W-80-9NN"/>
+                            <constraint firstItem="c0c-IL-C19" firstAttribute="top" secondItem="Jdk-bl-3Yn" secondAttribute="bottom" constant="8" id="yRW-K7-YiO"/>
+                            <constraint firstItem="c0c-IL-C19" firstAttribute="top" secondItem="Jdk-bl-3Yn" secondAttribute="bottom" constant="8" id="zUW-gu-YLL"/>
                         </constraints>
                     </view>
                     <connections>
