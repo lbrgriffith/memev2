@@ -42,6 +42,13 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         shareButton.enabled = false
     }
     
+    
+    @IBAction func cancelMeme(sender: UIBarButtonItem) {
+        textBottom.text = "BOTTOM"
+        textTop.text = "TOP"
+        imagePicked.image = nil
+    }
+    
     @IBAction func share(sender: AnyObject) {
         // Get the current MemeImage
         let activityItem: [AnyObject] = [save().MemeImage as AnyObject]
