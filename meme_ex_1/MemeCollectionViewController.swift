@@ -10,6 +10,10 @@ import Foundation
 import UIKit
 
 class MemeCollectionViewController: UICollectionViewController {
+    // holds array of saved Memes
+    var memes:[Meme]!
+    
+    // Collection
     @IBOutlet weak var memeFlowLayout: UICollectionViewFlowLayout!
     
     override func viewDidLoad() {
