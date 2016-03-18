@@ -99,6 +99,9 @@
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" id="P6x-R5-rS2"/>
+                    <connections>
+                        <outlet property="memeFlowLayout" destination="U6K-pL-HaI" id="BxG-Xx-lXT"/>
+                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tlT-08-Tx8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
