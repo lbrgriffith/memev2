@@ -9,15 +9,17 @@
 import Foundation
 import UIKit
 
+//** Meme class ready for encoding.  
 class Meme: NSObject, NSCoding {
     // MARK: Properties
     
-    //  representing the top and bottom text
+    //** Representing the top Meme text */
     var topString: String
+    //** Representing the bottom Meme text */
     var bottomString : String
-    // the original image
+    //** The original image */
     var originalImage : UIImage
-    // a memed image, combining the text and the original image
+    //** A memed image, combining the text and the original image */
     var memeImage : UIImage
     
     // MARK: Archiving Paths

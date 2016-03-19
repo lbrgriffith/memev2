@@ -13,6 +13,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     var memes = [Meme]()
     
+    // MARK: Save\Load Model
+    
+    // saves the array of Meme objects to the user's documents library.
     func saveMemes() {
         let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(memes, toFile: Meme.ArchiveURL.path!)
         if !isSuccessfulSave {
@@ -20,9 +23,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
+    // saves the array of Meme objects to the user's documents library.
     func loadMemes() -> [Meme]? {
         return NSKeyedUnarchiver.unarchiveObjectWithFile(Meme.ArchiveURL.path!) as? [Meme]
     }
+    
+    // MARK: Delegate stuff
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
