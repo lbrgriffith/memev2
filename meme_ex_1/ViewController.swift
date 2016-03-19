@@ -110,7 +110,11 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     func save() {
         // initializes a Meme model object.
-        _ = Meme(topString: textTop.text!, bottomString: textBottom.text!, OriginalImage:imagePicked.image!, MemeImage: generateMemedImage())
+        let unsavedMeme = Meme(topString: textTop.text!, bottomString: textBottom.text!, OriginalImage:imagePicked.image!, MemeImage: generateMemedImage())
+        // Add it to the memes array in the Application Delegate
+        let object = UIApplication.sharedApplication().delegate
+        let appDelegate = object as! AppDelegate
+        appDelegate.memes.append(unsavedMeme)
     }
 
     func keyboardWillShow(notification: NSNotification) {

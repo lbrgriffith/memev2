@@ -10,9 +10,7 @@ import Foundation
 import UIKit
 
 class MemeCollectionViewController: UICollectionViewController {
-    // holds array of saved Memes
-    var memes:[Meme]!
-    
+    var memes : [Meme]!
     // Collection
     @IBOutlet weak var memeFlowLayout: UICollectionViewFlowLayout!
     
@@ -24,7 +22,11 @@ class MemeCollectionViewController: UICollectionViewController {
         memeFlowLayout.minimumInteritemSpacing = space
         memeFlowLayout.minimumLineSpacing = space
         memeFlowLayout.itemSize = CGSizeMake(dimension, dimension)
+        
+        let applicationDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
+        memes = applicationDelegate.memes
     }
+    
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 0
     }

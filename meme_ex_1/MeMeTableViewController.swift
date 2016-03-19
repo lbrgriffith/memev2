@@ -10,12 +10,12 @@ import Foundation
 import UIKit
 
 class MeMeTableViewController: UITableViewController {
-    // holds array of saved Memes
-    var memes:[Meme]!
+    var memes : [Meme]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        let applicationDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
+        memes = applicationDelegate.memes
     }
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 0
