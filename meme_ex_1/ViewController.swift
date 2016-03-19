@@ -27,6 +27,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
         // Disable the share button.
         shareButton.enabled = false
+        let applicationDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
+        if (applicationDelegate.loadMemes() != nil) {
+            applicationDelegate.memes = applicationDelegate.loadMemes()!
+        }
     }
     
     func styleTextField(textField : UITextField) {
@@ -114,11 +118,14 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     func save() {
         // initializes a Meme model object.
-        let unsavedMeme = Meme(topString: textTop.text!, bottomString: textBottom.text!, OriginalImage:imagePicked.image!, MemeImage: generateMemedImage())
+        let unsavedMeme = Meme(top: textTop.text!, bottom: textBottom.text!, originalPhoto:imagePicked.image!, memePhoto: generateMemedImage())
         // Add it to the memes array in the Application Delegate
         let object = UIApplication.sharedApplication().delegate
         let appDelegate = object as! AppDelegate
-        appDelegate.memes.append(unsavedMeme)
+        appDelegate.memes.append(unsavedMeme!)
+        
+        let applicationDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
+        applicationDelegate.saveMemes()
     }
 
     func keyboardWillShow(notification: NSNotification) {

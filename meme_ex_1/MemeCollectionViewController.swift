@@ -23,6 +23,9 @@ class MemeCollectionViewController: UICollectionViewController {
         memeFlowLayout.minimumLineSpacing = space
         memeFlowLayout.itemSize = CGSizeMake(dimension, dimension)
         
+        // Use the edit button item provided by the table view controller.
+        navigationItem.leftBarButtonItem = editButtonItem()
+        
         let applicationDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
         memes = applicationDelegate.memes
     }
@@ -35,7 +38,7 @@ class MemeCollectionViewController: UICollectionViewController {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("MeMeCollectionViewCell", forIndexPath: indexPath) as! CustomMemeCell
         let meme = memes[indexPath.item]
         //cell.setText(meme.topString, bottomString: meme.bottomString)
-        let imageView = UIImageView(image: meme.MemeImage)
+        let imageView = UIImageView(image: meme.memeImage)
         cell.backgroundView = imageView
         
         return cell

@@ -18,6 +18,9 @@ class MeMeTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        // Use the edit button item provided by the table view controller.
+        navigationItem.leftBarButtonItem = editButtonItem()
+        
         let applicationDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
         memes = applicationDelegate.memes
     }
@@ -31,7 +34,7 @@ class MeMeTableViewController: UITableViewController {
         let meme = self.memes[indexPath.row]
         
         cell!.textLabel?.text = meme.topString
-        cell!.imageView?.image = meme.MemeImage
+        cell!.imageView?.image = meme.memeImage
         
         return cell!
     }
