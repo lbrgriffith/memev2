@@ -24,7 +24,7 @@
             </objects>
             <point key="canvasLocation" x="-407" y="-199"/>
         </scene>
-        <!--Me Me Table View Controller-->
+        <!--Saved Memes-->
         <scene sceneID="hO4-f3-0CG">
             <objects>
                 <tableViewController id="sol-bs-ILF" customClass="MeMeTableViewController" customModule="MeMeMe" customModuleProvider="target" sceneMemberID="viewController">
@@ -58,13 +58,15 @@
                             <outlet property="delegate" destination="sol-bs-ILF" id="on8-76-KTC"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="JiG-hq-58c"/>
+                    <navigationItem key="navigationItem" title="Saved Memes" id="JiG-hq-58c">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="fEv-vk-BLT"/>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mk6-gT-x34" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1014" y="-616"/>
         </scene>
-        <!--Meme Collection View Controller-->
+        <!--Saved Memes-->
         <scene sceneID="qZD-Wt-EC7">
             <objects>
                 <collectionViewController id="5aK-61-6Re" customClass="MemeCollectionViewController" customModule="MeMeMe" customModuleProvider="target" sceneMemberID="viewController">
@@ -98,7 +100,9 @@
                             <outlet property="delegate" destination="5aK-61-6Re" id="rob-w9-y3U"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" id="P6x-R5-rS2"/>
+                    <navigationItem key="navigationItem" title="Saved Memes" id="P6x-R5-rS2">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="tAj-Pw-7Dw"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="memeFlowLayout" destination="U6K-pL-HaI" id="BxG-Xx-lXT"/>
                     </connections>
