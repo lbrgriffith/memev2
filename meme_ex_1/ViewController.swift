@@ -52,8 +52,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         textBottom.text = defaultBottomText
         textTop.text = defaultTopText
         imagePicked.image = nil
-        //let tableViewController = MeMeTabBarController()
-        //presentViewController(tableViewController, animated: true, completion: nil)
+
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewControllerWithIdentifier("p1") as! MeMeTabBarController
         self.presentViewController(vc, animated: true, completion: nil)

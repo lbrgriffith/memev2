@@ -12,12 +12,10 @@ import UIKit
 // desired meme display
 class CustomMemeCell : UICollectionViewCell {
     
-    @IBOutlet weak var MemeImageUIImageView: UIImageView!
-    @IBOutlet weak var topStringUILabel: UILabel!
-    @IBOutlet weak var bottomStringUILabel: UILabel!
+    @IBOutlet weak var memedImage: UIImageView!
+
     
     func setText(top: String, bottomString: String) {
-        topStringUILabel.text = top
-        bottomStringUILabel.text = bottomString
+
     }
 }

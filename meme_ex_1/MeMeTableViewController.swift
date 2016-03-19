@@ -12,6 +12,10 @@ import UIKit
 class MeMeTableViewController: UITableViewController {
     var memes : [Meme]!
     
+    @IBAction func addMeme(sender: UIBarButtonItem) {
+        dismissViewControllerAnimated(true, completion: nil)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         let applicationDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
