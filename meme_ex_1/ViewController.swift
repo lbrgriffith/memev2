@@ -52,6 +52,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         textBottom.text = defaultBottomText
         textTop.text = defaultTopText
         imagePicked.image = nil
+        
     }
     
     @IBAction func share(sender: AnyObject) {

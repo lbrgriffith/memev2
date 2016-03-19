@@ -18,7 +18,7 @@ class MeMeTableViewController: UITableViewController {
         memes = applicationDelegate.memes
     }
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return memes.count
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
