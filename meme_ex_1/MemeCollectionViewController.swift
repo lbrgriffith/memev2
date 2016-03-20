@@ -15,6 +15,7 @@ class MemeCollectionViewController: UICollectionViewController {
     @IBAction func addMeme(sender: UIBarButtonItem) {
         dismissViewControllerAnimated(true, completion: nil)
     }
+    
     // Collection
     @IBOutlet weak var memeFlowLayout: UICollectionViewFlowLayout!
     
@@ -56,6 +57,7 @@ class MemeCollectionViewController: UICollectionViewController {
         let meme = memes[indexPath.item]
         nextViewController.meme = meme
         
-        self.navigationController?.pushViewController(nextViewController, animated: true)
+        self.presentViewController(nextViewController, animated: true, completion: nil)
+        //self.navigationController?.pushViewController(nextViewController, animated: true)
     }
 }
