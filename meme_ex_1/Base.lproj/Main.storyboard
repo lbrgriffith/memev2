@@ -72,6 +72,40 @@
             </objects>
             <point key="canvasLocation" x="1014" y="-616"/>
         </scene>
+        <!--Meme Detailed Controller-->
+        <scene sceneID="vZu-aW-pQb">
+            <objects>
+                <viewController storyboardIdentifier="details" id="b9z-eh-1S4" customClass="MemeDetailedController" customModule="MeMeMe" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Ngn-Xh-eFQ"/>
+                        <viewControllerLayoutGuide type="bottom" id="9gg-8X-oWt"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="PBO-XA-n5A">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Du5-E8-NK0">
+                                <rect key="frame" x="20" y="104" width="560" height="432"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Du5-E8-NK0" firstAttribute="leading" secondItem="PBO-XA-n5A" secondAttribute="leadingMargin" id="I3o-fC-GJE"/>
+                            <constraint firstItem="Du5-E8-NK0" firstAttribute="top" secondItem="Ngn-Xh-eFQ" secondAttribute="bottom" constant="40" id="fSX-Qf-gLy"/>
+                            <constraint firstItem="Du5-E8-NK0" firstAttribute="trailing" secondItem="PBO-XA-n5A" secondAttribute="trailingMargin" id="gfc-ct-9G3"/>
+                            <constraint firstItem="9gg-8X-oWt" firstAttribute="top" secondItem="Du5-E8-NK0" secondAttribute="bottom" constant="20" id="qcp-ZA-NeB"/>
+                        </constraints>
+                    </view>
+                    <toolbarItems/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="memedPhoto" destination="Du5-E8-NK0" id="1fn-DN-bDM"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gnh-48-v7u" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1736" y="-616"/>
+        </scene>
         <!--Sent Memes-->
         <scene sceneID="qZD-Wt-EC7">
             <objects>

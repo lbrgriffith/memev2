@@ -45,6 +45,9 @@ class MeMeTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let nextViewController = storyboard.instantiateViewControllerWithIdentifier("details") as! MemeDetailedController
+        nextViewController.meme = tableView.cellForRowAtIndexPath(indexPath)?.imageView?.image
+        self.navigationController?.pushViewController(nextViewController, animated: true)
     }
 }
