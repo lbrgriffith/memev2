@@ -9,6 +9,8 @@
 import UIKit
 
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
+    // MARK: Globals
+    
     @IBOutlet weak var imagePicked: UIImageView!
     @IBOutlet weak var cameraButton: UIBarButtonItem!
     @IBOutlet weak var textTop: UITextField!
@@ -20,6 +22,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     let defaultBottomText = "BOTTOM"
     let defaultTopText = "TOP"
 
+    // MARK: Controller Functions
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         styleTextField(textTop)
@@ -33,23 +37,13 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         }
     }
     
-    func styleTextField(textField : UITextField) {
-        // Text attributes
-        let memeTextAttributes = [
-            NSStrokeColorAttributeName : UIColor.blackColor(),
-            NSForegroundColorAttributeName : UIColor.whiteColor(),
-            NSFontAttributeName : UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
-            NSStrokeWidthAttributeName : -3.0]
-        
-        // Apply attributes to textFields
-        textField.defaultTextAttributes = memeTextAttributes
-        
-        // Align text.
-        textField.textAlignment = NSTextAlignment.Center
-        
-        // Set the textFields delegate to this class.
-        textField.delegate = self
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        // Only allow the camera option if the device supports it.
+        cameraButton.enabled = UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera)
     }
+    
+    // MARK: Actions
     
     @IBAction func cancelMeme(sender: UIBarButtonItem) {
         // Back to initial state...
@@ -70,20 +64,36 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         let activityView = UIActivityViewController(activityItems: activityItem, applicationActivities: nil)
         presentViewController(activityView, animated: true, completion: save)
     }
-  
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-        // Only allow the camera option if the device supports it.
-        cameraButton.enabled = UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera)
+    // Allow the user to select an image.
+    @IBAction func pickImage(sender: AnyObject) {
+        pickPhotoBySource(UIImagePickerControllerSourceType.PhotoLibrary)
     }
     
-    func subscribeToKeyboardNotifications() {
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShow:", name: UIKeyboardWillShowNotification, object: nil)
+    // Allow the user to select an image from the device's album
+    @IBAction func pickAnImageFromAlbum (sender: AnyObject) {
+        pickPhotoBySource(UIImagePickerControllerSourceType.Camera)
     }
     
-    func unsubscribeFromKeyboardNotifications() {
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillShowNotification, object: nil)
+    func pickPhotoBySource(source : UIImagePickerControllerSourceType) {
+        let imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        imagePicker.sourceType = source
+        presentViewController(imagePicker, animated: true, completion: nil)
     }
+    
+    func save() {
+        // initializes a Meme model object.
+        let unsavedMeme = Meme(top: textTop.text!, bottom: textBottom.text!, originalPhoto:imagePicked.image!, memePhoto: generateMemedImage())
+        // Add it to the memes array in the Application Delegate
+        let object = UIApplication.sharedApplication().delegate
+        let appDelegate = object as! AppDelegate
+        appDelegate.memes.append(unsavedMeme!)
+        
+        let applicationDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
+        applicationDelegate.saveMemes()
+    }   
+
+    // MARK: NOTIFICATION
     
     // Calcuate and return the size of the keyboard.
     func getKeyboardHeight(notification: NSNotification) -> CGFloat {
@@ -116,18 +126,14 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         return memedImage
     }
     
-    func save() {
-        // initializes a Meme model object.
-        let unsavedMeme = Meme(top: textTop.text!, bottom: textBottom.text!, originalPhoto:imagePicked.image!, memePhoto: generateMemedImage())
-        // Add it to the memes array in the Application Delegate
-        let object = UIApplication.sharedApplication().delegate
-        let appDelegate = object as! AppDelegate
-        appDelegate.memes.append(unsavedMeme!)
-        
-        let applicationDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
-        applicationDelegate.saveMemes()
+    func subscribeToKeyboardNotifications() {
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShow:", name: UIKeyboardWillShowNotification, object: nil)
     }
-
+    
+    func unsubscribeFromKeyboardNotifications() {
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillShowNotification, object: nil)
+    }
+    
     func keyboardWillShow(notification: NSNotification) {
         view.frame.origin.y -= getKeyboardHeight(notification)
     }
@@ -144,23 +150,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillHideNotification, object: nil)
     }
 
-    // Allow the user to select an image.
-    @IBAction func pickImage(sender: AnyObject) {
-        pickPhotoBySource(UIImagePickerControllerSourceType.PhotoLibrary)
-    }
-    
-    // Allow the user to select an image from the device's album
-    @IBAction func pickAnImageFromAlbum (sender: AnyObject) {
-        pickPhotoBySource(UIImagePickerControllerSourceType.Camera)
-    }
-    
-    func pickPhotoBySource(source : UIImagePickerControllerSourceType) {
-        let imagePicker = UIImagePickerController()
-        imagePicker.delegate = self
-        imagePicker.sourceType = source
-        presentViewController(imagePicker, animated: true, completion: nil)
-    }
-    
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         // Check if image is selected.
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
@@ -168,6 +157,26 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             shareButton.enabled = true
         }
         dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    // MARK: TextField Methods
+    
+    func styleTextField(textField : UITextField) {
+        // Text attributes
+        let memeTextAttributes = [
+            NSStrokeColorAttributeName : UIColor.blackColor(),
+            NSForegroundColorAttributeName : UIColor.whiteColor(),
+            NSFontAttributeName : UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
+            NSStrokeWidthAttributeName : -3.0]
+        
+        // Apply attributes to textFields
+        textField.defaultTextAttributes = memeTextAttributes
+        
+        // Align text.
+        textField.textAlignment = NSTextAlignment.Center
+        
+        // Set the textFields delegate to this class.
+        textField.delegate = self
     }
     
     func textFieldDidBeginEditing(textField: UITextField) {

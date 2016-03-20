@@ -10,14 +10,20 @@ import Foundation
 import UIKit
 
 class MemeDetailedController: UIViewController {
+    // MARK: Globals
     var meme : Meme?
     @IBOutlet weak var memedPhoto: UIImageView!
 
-    @IBAction func back(sender: UIBarButtonItem) {
-        dismissViewControllerAnimated(true, completion: nil)
-    }
     override func viewDidLoad() {
         super.viewDidLoad()
         memedPhoto.image = meme?.memeImage
+    }
+    
+    @IBAction func back(sender: UIBarButtonItem) {
+        dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    @IBAction func editMeme(sender: UIBarButtonItem) {
+        
     }
 }
