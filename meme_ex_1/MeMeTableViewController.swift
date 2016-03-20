@@ -41,13 +41,15 @@ class MeMeTableViewController: UITableViewController {
         cell!.textLabel?.text = "\(meme.topString)...\(meme.bottomString)"
         cell!.imageView?.image = meme.memeImage
         
+        
         return cell!
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let nextViewController = storyboard.instantiateViewControllerWithIdentifier("details") as! MemeDetailedController
-        nextViewController.meme = tableView.cellForRowAtIndexPath(indexPath)?.imageView?.image
+        let meme = self.memes[indexPath.row]
+        nextViewController.meme = meme
         self.navigationController?.pushViewController(nextViewController, animated: true)
     }
 }

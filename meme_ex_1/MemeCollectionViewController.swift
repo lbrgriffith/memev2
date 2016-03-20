@@ -40,7 +40,7 @@ class MemeCollectionViewController: UICollectionViewController {
         let meme = memes[indexPath.item]
 
         let imageView = UIImageView(image: meme.memeImage)
-        cell.memedImage = imageView
+        cell.meme = meme
         cell.backgroundView = imageView
         
         return cell
@@ -51,7 +51,9 @@ class MemeCollectionViewController: UICollectionViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let nextViewController = storyboard.instantiateViewControllerWithIdentifier("details") as! MemeDetailedController
         let cell = collectionView.cellForItemAtIndexPath(indexPath) as! CustomMemeCell
-        nextViewController.meme = cell.memedImage.image
+        
+        nextViewController.meme = cell.meme
+        
         self.navigationController?.pushViewController(nextViewController, animated: true)
     }
 }

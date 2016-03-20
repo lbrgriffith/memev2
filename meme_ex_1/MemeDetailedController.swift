@@ -10,11 +10,11 @@ import Foundation
 import UIKit
 
 class MemeDetailedController: UIViewController {
-    var meme : UIImage?
+    var meme : Meme?
     @IBOutlet weak var memedPhoto: UIImageView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        memedPhoto.image = meme
+        memedPhoto.image = meme?.memeImage
     }
 }
