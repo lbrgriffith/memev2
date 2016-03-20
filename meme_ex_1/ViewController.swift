@@ -24,6 +24,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     var isEdit : Bool = false
     var memeToEdit : Meme? = nil
+    var removalIndex : Int = 0
     let appDelegate = (UIApplication.sharedApplication().delegate) as! AppDelegate
 
     // MARK: Controller Functions
@@ -103,6 +104,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     func save() {
+        if isEdit {
+            appDelegate.memes.removeAtIndex(removalIndex)
+        }
+        
         // initializes a Meme model object.
         let unsavedMeme = Meme(top: textTop.text!, bottom: textBottom.text!, originalPhoto:imagePicked.image!, memePhoto: generateMemedImage())
         

@@ -12,6 +12,8 @@ import UIKit
 class MemeDetailedController: UIViewController {
     // MARK: Globals
     var meme : Meme?
+    var removalIndex : Int = 0
+    
     @IBOutlet weak var memedPhoto: UIImageView!
 
     override func viewDidLoad() {
@@ -28,6 +30,7 @@ class MemeDetailedController: UIViewController {
         let vc = storyboard.instantiateViewControllerWithIdentifier("MemeScene") as! ViewController
         vc.isEdit = true
         vc.memeToEdit = self.meme
+        vc.removalIndex = removalIndex
         presentViewController(vc, animated: true, completion: nil)
     }
 }
