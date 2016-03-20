@@ -40,15 +40,18 @@ class MemeCollectionViewController: UICollectionViewController {
         let meme = memes[indexPath.item]
 
         let imageView = UIImageView(image: meme.memeImage)
+        cell.memedImage = imageView
         cell.backgroundView = imageView
         
         return cell
     }
     
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let nextViewController = storyboard.instantiateViewControllerWithIdentifier("details") as! MemeDetailedController
-        
+        let cell = collectionView.cellForItemAtIndexPath(indexPath) as! CustomMemeCell
+        nextViewController.meme = cell.memedImage.image
         self.navigationController?.pushViewController(nextViewController, animated: true)
     }
 }
