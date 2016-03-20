@@ -25,6 +25,7 @@ class MemeCollectionViewController: UICollectionViewController {
     @IBOutlet weak var memeFlowLayout: UICollectionViewFlowLayout!
     
     // MARK: Overrides
+
     
     // Notifies the view controller that its view is about to be added to a view hierarchy.
     override func viewWillAppear(animated: Bool) {

@@ -25,6 +25,15 @@ class MeMeTableViewController: UITableViewController {
     
     // MARK: Overrides
     
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if editingStyle == .Delete {
+            // Delete the row from the data source
+            applicationDelegate.memes.removeAtIndex(indexPath.row)
+            self.tableView.reloadData()
+            applicationDelegate.saveMemes()
+        }
+    }
+    
     // Called after the controller's view is loaded into memory.
     override func viewDidLoad() {
         super.viewDidLoad()
