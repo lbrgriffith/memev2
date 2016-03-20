@@ -100,13 +100,13 @@
                                     </barButtonItem>
                                 </items>
                             </toolbar>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Du5-E8-NK0">
-                                <rect key="frame" x="20" y="64" width="560" height="516"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Du5-E8-NK0">
+                                <rect key="frame" x="20" y="95" width="560" height="485"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Du5-E8-NK0" firstAttribute="top" secondItem="2nW-Gv-0CD" secondAttribute="bottom" id="6Uj-cN-t3I"/>
+                            <constraint firstItem="Du5-E8-NK0" firstAttribute="top" secondItem="2nW-Gv-0CD" secondAttribute="bottom" constant="31" id="6Uj-cN-t3I"/>
                             <constraint firstItem="2nW-Gv-0CD" firstAttribute="centerX" secondItem="Du5-E8-NK0" secondAttribute="centerX" id="Mge-jY-qEm"/>
                             <constraint firstItem="9gg-8X-oWt" firstAttribute="top" secondItem="Du5-E8-NK0" secondAttribute="bottom" constant="20" id="RJl-YD-6H9"/>
                             <constraint firstAttribute="leadingMargin" secondItem="Du5-E8-NK0" secondAttribute="leading" id="igJ-fH-MRh"/>

@@ -19,6 +19,7 @@ class MemeDetailedController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         memedPhoto.image = meme?.memeImage
+        memedPhoto.contentMode = UIViewContentMode.ScaleAspectFill
     }
     
     @IBAction func back(sender: UIBarButtonItem) {
