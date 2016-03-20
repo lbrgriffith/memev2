@@ -19,7 +19,7 @@ class MeMeTableViewController: UITableViewController {
     @IBAction func addMeme(sender: UIBarButtonItem) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewControllerWithIdentifier("MemeScene") as! ViewController
-        self.presentViewController(vc, animated: true, completion: nil)
+        presentViewController(vc, animated: true, completion: nil)
     }
     
     // MARK: Overrides
@@ -28,7 +28,7 @@ class MeMeTableViewController: UITableViewController {
         if editingStyle == .Delete {
             // Delete the row from the data source
             applicationDelegate.memes.removeAtIndex(indexPath.row)
-            self.tableView.reloadData()
+            tableView.reloadData()
             applicationDelegate.saveMemes()
         }
     }
@@ -76,13 +76,13 @@ class MeMeTableViewController: UITableViewController {
         let meme = applicationDelegate.memes[indexPath.row]
         nextViewController.meme = meme
         
-        self.presentViewController(nextViewController, animated: true, completion: nil)
+        presentViewController(nextViewController, animated: true, completion: nil)
     }
     
     // MARK: Data Functions
     
     func load() {
         // Centralized model
-        self.tableView.reloadData()
+        tableView.reloadData()
     }
 }

@@ -29,7 +29,7 @@ class MemeDetailedController: UIViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewControllerWithIdentifier("MemeScene") as! ViewController
         vc.isEdit = true
-        vc.memeToEdit = self.meme
+        vc.memeToEdit = meme
         vc.removalIndex = removalIndex
         presentViewController(vc, animated: true, completion: nil)
     }

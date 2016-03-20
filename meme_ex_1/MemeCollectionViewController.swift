@@ -18,7 +18,7 @@ class MemeCollectionViewController: UICollectionViewController {
     @IBAction func addMeme(sender: UIBarButtonItem) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewControllerWithIdentifier("MemeScene") as! ViewController
-        self.presentViewController(vc, animated: true, completion: nil)
+        presentViewController(vc, animated: true, completion: nil)
     }
     
     // Collection
@@ -30,14 +30,14 @@ class MemeCollectionViewController: UICollectionViewController {
     // Notifies the view controller that its view is about to be added to a view hierarchy.
     override func viewWillAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        self.collectionView?.reloadData()
+        collectionView?.reloadData()
     }
     
     // Called after the controller's view is loaded into memory.
     override func viewDidLoad() {
         super.viewDidLoad()
         let space : CGFloat = 3.0
-        let dimension = (self.view.frame.size.width - (2 * space)) / 3.0
+        let dimension = (view.frame.size.width - (2 * space)) / 3.0
         
         memeFlowLayout.minimumInteritemSpacing = space
         memeFlowLayout.minimumLineSpacing = space
@@ -68,6 +68,6 @@ class MemeCollectionViewController: UICollectionViewController {
         let meme = applicationDelegate.memes[indexPath.item]
         nextViewController.meme = meme
         
-        self.presentViewController(nextViewController, animated: true, completion: nil)
+        presentViewController(nextViewController, animated: true, completion: nil)
     }
 }

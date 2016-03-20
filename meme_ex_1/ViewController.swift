@@ -62,8 +62,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         appDelegate.saveMemes()
         
         if isEdit {
-            self.presentingViewController?.dismissViewControllerAnimated(false, completion: {})
-            }
+            presentingViewController?.dismissViewControllerAnimated(false, completion: {})
+        }
     }
     
     // MARK: Actions
@@ -105,6 +105,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     func save() {
         if isEdit {
+            // Remove the saved meme from the collection, then allow the new one to save naturally.
             appDelegate.memes.removeAtIndex(removalIndex)
         }
         
@@ -133,8 +134,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         topToolBar.hidden = true
         
         // Render view to an image
-        UIGraphicsBeginImageContext(self.view.frame.size)
-        view.drawViewHierarchyInRect(self.view.frame,
+        UIGraphicsBeginImageContext(view.frame.size)
+        view.drawViewHierarchyInRect(view.frame,
             afterScreenUpdates: true)
         let memedImage : UIImage =
         UIGraphicsGetImageFromCurrentImageContext()
@@ -175,7 +176,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         // Check if image is selected.
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
-            self.imagePicked.image = image
+            imagePicked.image = image
             shareButton.enabled = true
         }
         
@@ -205,8 +206,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     func textFieldDidBeginEditing(textField: UITextField) {
         // Enable notifications only if the bottom textbox is being edited.
         if textField == textBottom {
-            self.subscribeToKeyboardNotifications()
-            self.subscribeToKeyboardHidingNotifications()
+            subscribeToKeyboardNotifications()
+            subscribeToKeyboardHidingNotifications()
         }
         // remove the text if = to TOP or BOTTOM initial text.
         if textField.text == defaultTopText {
@@ -220,8 +221,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     func textFieldDidEndEditing(textField: UITextField) {
         // Remember to remove the observers if done editing bottom text.
         if textField == textBottom {
-            self.unsubscribeFromKeyboardNotifications()
-            self.unsubscribeFromKeyboardHidingNotifications()
+            unsubscribeFromKeyboardNotifications()
+            unsubscribeFromKeyboardHidingNotifications()
         }
     }
     

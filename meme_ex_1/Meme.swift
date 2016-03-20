@@ -40,10 +40,10 @@ class Meme: NSObject, NSCoding {
     
     init?(top: String, bottom: String, originalPhoto: UIImage?, memePhoto: UIImage?) {
         // Initialize stored properties.
-        self.topString = top
-        self.bottomString = bottom
-        self.originalImage = originalPhoto!
-        self.memeImage = memePhoto!
+        topString = top
+        bottomString = bottom
+        originalImage = originalPhoto!
+        memeImage = memePhoto!
         
         super.init()
     }
