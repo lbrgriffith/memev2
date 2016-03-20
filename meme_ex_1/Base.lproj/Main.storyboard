@@ -84,35 +84,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2nW-Gv-0CD">
-                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
-                                <items>
-                                    <barButtonItem title="&lt; Sent Memes" id="FpD-Cu-qCp">
-                                        <connections>
-                                            <action selector="back:" destination="b9z-eh-1S4" id="hzW-H2-cLB"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="spt-ft-m99"/>
-                                    <barButtonItem title="Edit" id="N4U-Oq-oAV">
-                                        <connections>
-                                            <action selector="editMeme:" destination="b9z-eh-1S4" id="0M3-YY-pQk"/>
-                                        </connections>
-                                    </barButtonItem>
-                                </items>
-                            </toolbar>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Du5-E8-NK0">
-                                <rect key="frame" x="20" y="95" width="560" height="485"/>
+                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Du5-E8-NK0" firstAttribute="top" secondItem="2nW-Gv-0CD" secondAttribute="bottom" constant="31" id="6Uj-cN-t3I"/>
-                            <constraint firstItem="2nW-Gv-0CD" firstAttribute="centerX" secondItem="Du5-E8-NK0" secondAttribute="centerX" id="Mge-jY-qEm"/>
-                            <constraint firstItem="9gg-8X-oWt" firstAttribute="top" secondItem="Du5-E8-NK0" secondAttribute="bottom" constant="20" id="RJl-YD-6H9"/>
-                            <constraint firstAttribute="leadingMargin" secondItem="Du5-E8-NK0" secondAttribute="leading" id="igJ-fH-MRh"/>
-                            <constraint firstItem="2nW-Gv-0CD" firstAttribute="top" secondItem="Ngn-Xh-eFQ" secondAttribute="bottom" id="kjx-W4-V9d"/>
-                            <constraint firstItem="2nW-Gv-0CD" firstAttribute="leading" secondItem="PBO-XA-n5A" secondAttribute="leading" id="mZr-BP-bit"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Du5-E8-NK0" secondAttribute="trailing" id="mrv-aQ-2r6"/>
+                            <constraint firstItem="Du5-E8-NK0" firstAttribute="top" secondItem="Ngn-Xh-eFQ" secondAttribute="bottom" id="BQ4-zP-Ucl"/>
+                            <constraint firstItem="9gg-8X-oWt" firstAttribute="top" secondItem="Du5-E8-NK0" secondAttribute="bottom" id="RJl-YD-6H9"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="Du5-E8-NK0" secondAttribute="leading" constant="20" id="igJ-fH-MRh"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Du5-E8-NK0" secondAttribute="trailing" constant="-20" id="mrv-aQ-2r6"/>
                         </constraints>
                     </view>
                     <toolbarItems/>

@@ -76,7 +76,8 @@ class MeMeTableViewController: UITableViewController {
         let meme = applicationDelegate.memes[indexPath.row]
         nextViewController.meme = meme
         
-        presentViewController(nextViewController, animated: true, completion: nil)
+        navigationController?.pushViewController(nextViewController, animated: true)
+        //presentViewController(nextViewController, animated: true, completion: nil)
     }
     
     // MARK: Data Functions

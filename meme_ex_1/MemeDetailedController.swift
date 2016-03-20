@@ -20,13 +20,15 @@ class MemeDetailedController: UIViewController {
         super.viewDidLoad()
         memedPhoto.image = meme?.memeImage
         memedPhoto.contentMode = UIViewContentMode.ScaleAspectFill
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Edit", style: .Plain, target: self, action: "edit")
     }
     
     @IBAction func back(sender: UIBarButtonItem) {
         dismissViewControllerAnimated(true, completion: nil)
     }
     
-    @IBAction func editMeme(sender: UIBarButtonItem) {
+    func edit() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewControllerWithIdentifier("MemeScene") as! MemeEditorViewController
         vc.isEdit = true
