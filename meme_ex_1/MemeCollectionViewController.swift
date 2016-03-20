@@ -12,6 +12,9 @@ import UIKit
 class MemeCollectionViewController: UICollectionViewController {
     var memes : [Meme]!
     
+    @IBAction func addMeme(sender: UIBarButtonItem) {
+        dismissViewControllerAnimated(true, completion: nil)
+    }
     // Collection
     @IBOutlet weak var memeFlowLayout: UICollectionViewFlowLayout!
     
@@ -40,7 +43,6 @@ class MemeCollectionViewController: UICollectionViewController {
         let meme = memes[indexPath.item]
 
         let imageView = UIImageView(image: meme.memeImage)
-        cell.meme = meme
         cell.backgroundView = imageView
         
         return cell
@@ -50,9 +52,9 @@ class MemeCollectionViewController: UICollectionViewController {
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let nextViewController = storyboard.instantiateViewControllerWithIdentifier("details") as! MemeDetailedController
-        let cell = collectionView.cellForItemAtIndexPath(indexPath) as! CustomMemeCell
         
-        nextViewController.meme = cell.meme
+        let meme = memes[indexPath.item]
+        nextViewController.meme = meme
         
         self.navigationController?.pushViewController(nextViewController, animated: true)
     }

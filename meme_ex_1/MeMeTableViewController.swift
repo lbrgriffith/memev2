@@ -41,7 +41,6 @@ class MeMeTableViewController: UITableViewController {
         cell!.textLabel?.text = "\(meme.topString)...\(meme.bottomString)"
         cell!.imageView?.image = meme.memeImage
         
-        
         return cell!
     }
     

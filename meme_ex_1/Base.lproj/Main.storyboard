@@ -150,7 +150,11 @@
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" title="Sent Memes" id="P6x-R5-rS2">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="tAj-Pw-7Dw"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="tAj-Pw-7Dw">
+                            <connections>
+                                <action selector="addMeme:" destination="5aK-61-6Re" id="1Jr-P0-XRQ"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="memeFlowLayout" destination="U6K-pL-HaI" id="BxG-Xx-lXT"/>
