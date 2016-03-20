@@ -31,16 +31,20 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
         // Disable the share button.
         shareButton.enabled = false
-        let applicationDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
-        if (applicationDelegate.loadMemes() != nil) {
-            applicationDelegate.memes = applicationDelegate.loadMemes()!
-        }
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         // Only allow the camera option if the device supports it.
         cameraButton.enabled = UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera)
+    }
+    
+    // Notifies the view controller that its view is about to be removed from a view hierarchy.
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewControllerWithIdentifier("SentTableView") as! MeMeTableViewController
+        vc.load()
     }
     
     // MARK: Actions
@@ -51,19 +55,18 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         textTop.text = defaultTopText
         imagePicked.image = nil
 
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewControllerWithIdentifier("p1") as! MeMeTabBarController
-        self.presentViewController(vc, animated: true, completion: nil)
+        dismissViewControllerAnimated(true, completion: nil)
     }
     
     @IBAction func share(sender: AnyObject) {
         // Get the current MemeImage
         let activityItem: [AnyObject] = [generateMemedImage() as AnyObject]
         
-        // Show the Activity View to allow the user to share theie Meme
+        // Show the Activity View to allow the user to share this Meme.
         let activityView = UIActivityViewController(activityItems: activityItem, applicationActivities: nil)
         presentViewController(activityView, animated: true, completion: save)
     }
+    
     // Allow the user to select an image.
     @IBAction func pickImage(sender: AnyObject) {
         pickPhotoBySource(UIImagePickerControllerSourceType.PhotoLibrary)
@@ -84,14 +87,12 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     func save() {
         // initializes a Meme model object.
         let unsavedMeme = Meme(top: textTop.text!, bottom: textBottom.text!, originalPhoto:imagePicked.image!, memePhoto: generateMemedImage())
+        
         // Add it to the memes array in the Application Delegate
         let object = UIApplication.sharedApplication().delegate
         let appDelegate = object as! AppDelegate
         appDelegate.memes.append(unsavedMeme!)
-        
-        let applicationDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
-        applicationDelegate.saveMemes()
-    }   
+    }
 
     // MARK: NOTIFICATION
     
@@ -156,6 +157,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             self.imagePicked.image = image
             shareButton.enabled = true
         }
+        
         dismissViewControllerAnimated(true, completion: nil)
     }
     

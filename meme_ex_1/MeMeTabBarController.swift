@@ -6,9 +6,14 @@
 //  Copyright © 2016 Developer Play. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
 class MeMeTabBarController : UITabBarController {
-    
+    // MARK: Overrides
+    override func viewDidLoad() {
+        let applicationDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
+        if (applicationDelegate.loadMemes() != nil) {
+            applicationDelegate.memes = applicationDelegate.loadMemes()!
+        }
+    }
 }

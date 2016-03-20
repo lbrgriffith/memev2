@@ -6,19 +6,33 @@
 //  Copyright © 2016 Developer Play. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
 class MemeCollectionViewController: UICollectionViewController {
-    var memes : [Meme]!
+    // MARK: Globals
+    var applicationDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
     
+    // MARK: Actions
+    
+    // Launch the scene to create and send a Meme.
     @IBAction func addMeme(sender: UIBarButtonItem) {
-        dismissViewControllerAnimated(true, completion: nil)
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewControllerWithIdentifier("MemeScene") as! ViewController
+        self.presentViewController(vc, animated: true, completion: nil)
     }
     
     // Collection
     @IBOutlet weak var memeFlowLayout: UICollectionViewFlowLayout!
     
+    // MARK: Overrides
+    
+    // Notifies the view controller that its view is about to be added to a view hierarchy.
+    override func viewWillAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        self.collectionView?.reloadData()
+    }
+    
+    // Called after the controller's view is loaded into memory.
     override func viewDidLoad() {
         super.viewDidLoad()
         let space : CGFloat = 3.0
@@ -27,21 +41,17 @@ class MemeCollectionViewController: UICollectionViewController {
         memeFlowLayout.minimumInteritemSpacing = space
         memeFlowLayout.minimumLineSpacing = space
         memeFlowLayout.itemSize = CGSizeMake(dimension, dimension)
-        
-        // Use the edit button item provided by the table view controller.
-        navigationItem.leftBarButtonItem = editButtonItem()
-        
-        let applicationDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
-        memes = applicationDelegate.memes
     }
     
+    // Asks your data source object for the number of items in the specified section.
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return memes.count
+        return applicationDelegate.memes.count
     }
     
+    // Asks your data source object for the cell that corresponds to the specified item in the collection view.
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("MeMeCollectionViewCell", forIndexPath: indexPath) as! CustomMemeCell
-        let meme = memes[indexPath.item]
+        let meme = applicationDelegate.memes[indexPath.item]
 
         let imageView = UIImageView(image: meme.memeImage)
         cell.backgroundView = imageView
@@ -49,15 +59,14 @@ class MemeCollectionViewController: UICollectionViewController {
         return cell
     }
     
+    // Tells the delegate that the item at the specified index path was selected.
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let nextViewController = storyboard.instantiateViewControllerWithIdentifier("details") as! MemeDetailedController
         
-        let meme = memes[indexPath.item]
+        let meme = applicationDelegate.memes[indexPath.item]
         nextViewController.meme = meme
         
         self.presentViewController(nextViewController, animated: true, completion: nil)
-        //self.navigationController?.pushViewController(nextViewController, animated: true)
     }
 }
