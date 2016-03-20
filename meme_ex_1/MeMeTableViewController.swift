@@ -18,7 +18,7 @@ class MeMeTableViewController: UITableViewController {
     // dismiss the current view to display the construct Meme scene.
     @IBAction func addMeme(sender: UIBarButtonItem) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewControllerWithIdentifier("MemeScene") as! ViewController
+        let vc = storyboard.instantiateViewControllerWithIdentifier("MemeScene") as! MemeEditorViewController
         presentViewController(vc, animated: true, completion: nil)
     }
     

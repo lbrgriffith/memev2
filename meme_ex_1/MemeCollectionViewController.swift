@@ -17,7 +17,7 @@ class MemeCollectionViewController: UICollectionViewController {
     // Launch the scene to create and send a Meme.
     @IBAction func addMeme(sender: UIBarButtonItem) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewControllerWithIdentifier("MemeScene") as! ViewController
+        let vc = storyboard.instantiateViewControllerWithIdentifier("MemeScene") as! MemeEditorViewController
         presentViewController(vc, animated: true, completion: nil)
     }
     

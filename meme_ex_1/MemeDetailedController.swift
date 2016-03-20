@@ -27,7 +27,7 @@ class MemeDetailedController: UIViewController {
     
     @IBAction func editMeme(sender: UIBarButtonItem) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewControllerWithIdentifier("MemeScene") as! ViewController
+        let vc = storyboard.instantiateViewControllerWithIdentifier("MemeScene") as! MemeEditorViewController
         vc.isEdit = true
         vc.memeToEdit = meme
         vc.removalIndex = removalIndex
