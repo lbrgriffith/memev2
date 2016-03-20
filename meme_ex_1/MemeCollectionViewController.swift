@@ -11,6 +11,7 @@ import UIKit
 
 class MemeCollectionViewController: UICollectionViewController {
     var memes : [Meme]!
+    
     // Collection
     @IBOutlet weak var memeFlowLayout: UICollectionViewFlowLayout!
     
@@ -37,7 +38,7 @@ class MemeCollectionViewController: UICollectionViewController {
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("MeMeCollectionViewCell", forIndexPath: indexPath) as! CustomMemeCell
         let meme = memes[indexPath.item]
-        //cell.setText(meme.topString, bottomString: meme.bottomString)
+
         let imageView = UIImageView(image: meme.memeImage)
         cell.backgroundView = imageView
         
@@ -45,6 +46,9 @@ class MemeCollectionViewController: UICollectionViewController {
     }
     
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let nextViewController = storyboard.instantiateViewControllerWithIdentifier("details") as! MemeDetailedController
         
+        self.navigationController?.pushViewController(nextViewController, animated: true)
     }
 }

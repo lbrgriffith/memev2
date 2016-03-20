@@ -14,8 +14,4 @@ class CustomMemeCell : UICollectionViewCell {
     
     @IBOutlet weak var memedImage: UIImageView!
 
-    
-    func setText(top: String, bottomString: String) {
-
-    }
 }
