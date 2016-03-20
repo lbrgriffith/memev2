@@ -24,6 +24,10 @@ class MemeDetailedController: UIViewController {
     }
     
     @IBAction func editMeme(sender: UIBarButtonItem) {
-        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewControllerWithIdentifier("MemeScene") as! ViewController
+        vc.isEdit = true
+        vc.memeToEdit = self.meme
+        presentViewController(vc, animated: true, completion: nil)
     }
 }

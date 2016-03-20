@@ -21,6 +21,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     let defaultBottomText = "BOTTOM"
     let defaultTopText = "TOP"
+    
+    var isEdit : Bool = false
+    var memeToEdit : Meme? = nil
+    let appDelegate = (UIApplication.sharedApplication().delegate) as! AppDelegate
 
     // MARK: Controller Functions
     
@@ -29,8 +33,16 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         styleTextField(textTop)
         styleTextField(textBottom)
         
-        // Disable the share button.
-        shareButton.enabled = false
+        if isEdit {
+            if (memeToEdit != nil) {
+                textTop.text = memeToEdit?.topString
+                textBottom.text = memeToEdit?.bottomString
+                imagePicked.image = memeToEdit?.originalImage
+            }
+        } else {
+            // Disable the share button.
+            shareButton.enabled = false
+        }
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -45,6 +57,12 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewControllerWithIdentifier("SentTableView") as! MeMeTableViewController
         vc.load()
+        
+        appDelegate.saveMemes()
+        
+        if isEdit {
+            self.presentingViewController?.dismissViewControllerAnimated(false, completion: {})
+            }
     }
     
     // MARK: Actions
@@ -89,8 +107,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         let unsavedMeme = Meme(top: textTop.text!, bottom: textBottom.text!, originalPhoto:imagePicked.image!, memePhoto: generateMemedImage())
         
         // Add it to the memes array in the Application Delegate
-        let object = UIApplication.sharedApplication().delegate
-        let appDelegate = object as! AppDelegate
         appDelegate.memes.append(unsavedMeme!)
     }
 
