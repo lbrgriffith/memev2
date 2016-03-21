@@ -59,8 +59,6 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         let vc = storyboard.instantiateViewControllerWithIdentifier("SentTableView") as! MeMeTableViewController
         vc.load()
         
-        appDelegate.saveMemes()
-        
         if isEdit {
             presentingViewController?.dismissViewControllerAnimated(false, completion: {})
         }
@@ -110,10 +108,10 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         }
         
         // initializes a Meme model object.
-        let unsavedMeme = Meme(top: textTop.text!, bottom: textBottom.text!, originalPhoto:imagePicked.image!, memePhoto: generateMemedImage())
+        let unsavedMeme = Meme(topString: textTop.text!, bottomString: textBottom.text!, originalImage:imagePicked.image!, memeImage: generateMemedImage())
         
         // Add it to the memes array in the Application Delegate
-        appDelegate.memes.append(unsavedMeme!)
+        appDelegate.memes.append(unsavedMeme)
     }
 
     // MARK: NOTIFICATION

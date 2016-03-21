@@ -29,7 +29,6 @@ class MeMeTableViewController: UITableViewController {
             // Delete the row from the data source
             applicationDelegate.memes.removeAtIndex(indexPath.row)
             tableView.reloadData()
-            applicationDelegate.saveMemes()
         }
     }
     
