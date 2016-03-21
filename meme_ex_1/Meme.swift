@@ -6,7 +6,6 @@
 //  Copyright © 2016 Developer Play. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
 struct Meme {

@@ -6,7 +6,6 @@
 //  Copyright © 2016 Developer Play. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
 class MemeDetailedController: UIViewController {
@@ -22,10 +21,6 @@ class MemeDetailedController: UIViewController {
         memedPhoto.contentMode = UIViewContentMode.ScaleAspectFill
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Edit", style: .Plain, target: self, action: "edit")
-    }
-    
-    @IBAction func back(sender: UIBarButtonItem) {
-        dismissViewControllerAnimated(true, completion: nil)
     }
     
     func edit() {
