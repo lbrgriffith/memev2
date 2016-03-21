@@ -22,7 +22,7 @@ class MeMeTableViewController: UITableViewController {
     }
     
     // MARK: Overrides
-    
+    // Asks the data source to commit the insertion or deletion of a specified row in the receiver.
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
             // Delete the row from the data source
@@ -44,6 +44,7 @@ class MeMeTableViewController: UITableViewController {
         load()
     }
     
+    // Notifies the view controller that its view was added to a view hierarchy.
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         load()
@@ -79,7 +80,7 @@ class MeMeTableViewController: UITableViewController {
     }
     
     // MARK: Data Functions
-    
+    // Refreshes the data in the table view.
     func load() {
         // Centralized model
         tableView.reloadData()

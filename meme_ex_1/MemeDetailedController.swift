@@ -15,6 +15,7 @@ class MemeDetailedController: UIViewController {
     
     @IBOutlet weak var memedPhoto: UIImageView!
 
+    // Called after the controller's view is loaded into memory.
     override func viewDidLoad() {
         super.viewDidLoad()
         memedPhoto.image = meme?.memeImage
@@ -23,6 +24,7 @@ class MemeDetailedController: UIViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Edit", style: .Plain, target: self, action: "edit")
     }
     
+    // Loads the Meme editor
     func edit() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewControllerWithIdentifier("MemeScene") as! MemeEditorViewController
