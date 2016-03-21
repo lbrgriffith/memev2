@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="aTd-Hl-EaU">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15E64a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="aTd-Hl-EaU">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
@@ -85,12 +85,12 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Du5-E8-NK0">
-                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Du5-E8-NK0" firstAttribute="top" secondItem="Ngn-Xh-eFQ" secondAttribute="bottom" id="BQ4-zP-Ucl"/>
+                            <constraint firstItem="Du5-E8-NK0" firstAttribute="top" secondItem="Ngn-Xh-eFQ" secondAttribute="bottom" constant="-20" id="BQ4-zP-Ucl"/>
                             <constraint firstItem="9gg-8X-oWt" firstAttribute="top" secondItem="Du5-E8-NK0" secondAttribute="bottom" id="RJl-YD-6H9"/>
                             <constraint firstAttribute="leadingMargin" secondItem="Du5-E8-NK0" secondAttribute="leading" constant="20" id="igJ-fH-MRh"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Du5-E8-NK0" secondAttribute="trailing" constant="-20" id="mrv-aQ-2r6"/>
