@@ -9,15 +9,8 @@
 import UIKit
 
 struct Meme {
-    // MARK: Struct - Properties
-    
-    //** Representing the top Meme text */
     var topString: String
-    //** Representing the bottom Meme text */
-    var bottomString : String
-    //** The original image */
-    var originalImage : UIImage
-    //** A memed image, combining the text and the original image */
-    var memeImage : UIImage
+    var bottomString: String
+    var originalImage: UIImage
+    var memeImage: UIImage
 }
-

@@ -8,8 +8,6 @@
 
 import UIKit
 
-// desired meme display
-class CustomMemeCell : UICollectionViewCell {
-    var meme : Meme?
+final class CustomMemeCell: UICollectionViewCell {
     @IBOutlet weak var memedImage: UIImageView!
 }

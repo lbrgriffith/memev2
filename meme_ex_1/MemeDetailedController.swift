@@ -8,29 +8,30 @@
 
 import UIKit
 
-class MemeDetailedController: UIViewController {
-    // MARK: Globals
-    var meme : Meme?
-    var removalIndex : Int = 0
-    
+final class MemeDetailedController: UIViewController {
+
+    var meme: Meme?
+    var removalIndex = 0
+
     @IBOutlet weak var memedPhoto: UIImageView!
 
-    // Called after the controller's view is loaded into memory.
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .systemBackground
         memedPhoto.image = meme?.memeImage
-        memedPhoto.contentMode = UIViewContentMode.ScaleAspectFill
-        
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Edit", style: .Plain, target: self, action: "edit")
+        memedPhoto.contentMode = .scaleAspectFit
+
+        navigationItem.rightBarButtonItem = UIBarButtonItem(
+            title: "Edit", style: .plain, target: self, action: #selector(edit)
+        )
     }
-    
-    // Loads the Meme editor
-    func edit() {
+
+    @objc private func edit() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewControllerWithIdentifier("MemeScene") as! MemeEditorViewController
-        vc.isEdit = true
-        vc.memeToEdit = meme
-        vc.removalIndex = removalIndex
-        presentViewController(vc, animated: true, completion: nil)
+        let editor = storyboard.instantiateViewController(withIdentifier: "MemeScene") as! MemeEditorViewController
+        editor.isEdit = true
+        editor.memeToEdit = meme
+        editor.removalIndex = removalIndex
+        present(editor, animated: true)
     }
 }
